@@ -8,6 +8,8 @@ type State = {
   fileType: "pdf" | "xlsx";
   viewerHeight: string;
   shapes: Array<"square" | "circle" | "triangle">;
+  selectedShapeIndex: number | null;
+  
 };
 type DocViewerProps = {
   documents: Array<{ uri: string }>;
@@ -42,6 +44,7 @@ class DocumentViewer extends Component<{}, State> {
       fileType: "pdf",
       viewerHeight: "1800px",
       shapes: [],
+      selectedShapeIndex: null,
     };
     this.docViewerRef = createRef();
   }
@@ -95,6 +98,18 @@ class DocumentViewer extends Component<{}, State> {
     }));
   };
 
+  removeShape = (indexToRemove: number) => {
+    this.setState((prevState) => ({
+      shapes: prevState.shapes.filter((_, index) => index !== indexToRemove),
+      selectedShapeIndex: null,
+    }));
+  };
+
+  selectShape = (index: number) => {
+    this.setState({ selectedShapeIndex: index });
+  };
+
+
   render() {
     return (
       <>
@@ -117,7 +132,7 @@ class DocumentViewer extends Component<{}, State> {
           <div className="left-panel">
             <div className="shapes-container">
               {this.state.shapes.map((shape, index) => (
-                <DraggableCard key={index} shape={shape} />
+                <DraggableCard key={index} shape={shape} onRemove={() => this.removeShape(index)} />
               ))}
             </div>
             <div className="button-shape-container">
