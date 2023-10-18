@@ -1,0 +1,70 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.pdf-viewer-with-draggable {
+  display: flex;
+}
+
+.left-panel {
+  flex: 20%;
+}
+
+.right-panel {
+  flex: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.button-shape-container {
+  position: fixed;
+  top: 60px;
+  z-index: 1000;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  right: 10px;
+}
+.button-shape-container button {
+  width: 60px;
+  height: 30px;
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.draggable-container {
+  top: 10%;
+  right: 5%;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  right: 10px;
+}
+.shapes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 70vh;
+}
